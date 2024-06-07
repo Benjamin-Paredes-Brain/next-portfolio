@@ -2,32 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  @font-face {
+    font-family: "Josefin";
+    src: url("/fonts/JosefinSans-Regular.woff2") format("woff2");
+    font-display: swap;
   }
-}
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-customColor1;
+    font-family: "Josefin"; 
+  }
+  
+  .text-stroke {
+    @apply text-customColor1;
+    text-shadow: -0.6px -0.6px 0 #ffffff, 0.6px -0.6px 0 #ffffff, -0.6px 0.6px 0 #ffffff, 0.6px 0.6px 0 #ffffff;
+  }
+  
+  .section-separation {
+    @apply mx-4 md:mx-8 lg:mx-60;
+  }
+  
+  .shadow-img {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .8));
+  }
+  
+  .title {
+    @apply text-6xl lg:text-7xl my-8 lg:my-16;
+  }
