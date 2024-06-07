@@ -108,7 +108,7 @@ const UFO = (props) => {
             canvas.removeEventListener("touchend", handleTouchEnd);
             canvas.removeEventListener("touchmove", handleTouchMove);
         };
-    }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+    }, [gl, handlePointerDown, handlePointerUp, handlePointerMove, handleKeyDown, handlePointerMove, handleTouchMove]);
     
 
     useFrame(() => {
