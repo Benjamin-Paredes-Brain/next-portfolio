@@ -1,21 +1,37 @@
 "use client"
 
-import { useRef, Suspense, lazy, useState } from "react";
+import { useRef, Suspense, lazy, useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
 const Meteors = lazy(() => import("./Meteors"));
 
 export function ContactForm() {
+  const [loading, setLoading] = useState(false)
   const [recaptchaValue, setRecaptchaValue] = useState("");
   const [recaptchaKey, setRecaptchaKey] = useState(1);
   const form = useRef();
   const apiCaptchaKey = process.env.NEXT_PUBLIC_CAPTCHA;
 
+  useEffect(() => {
+    if (loading) {
+      Swal.fire({
+        title: 'Sending...',
+        text: 'Wait please.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+    } else {
+      Swal.close();
+    }
+  }, [loading])
+
   const sendEmail = async (values, { resetForm }) => {
     if (!recaptchaValue) {
       console.error("Please complete the CAPTCHA");
-      const Swal = (await import("sweetalert2")).default;
       Swal.fire({
         title: "Error: Complete the captcha",
         icon: "error",
@@ -24,6 +40,8 @@ export function ContactForm() {
       });
       return;
     }
+
+    setLoading(true);
 
     try {
       const emailjs = await import("@emailjs/browser");
@@ -48,7 +66,8 @@ export function ContactForm() {
       resetForm();
       setRecaptchaValue("");
       setRecaptchaKey(prevKey => prevKey + 1);
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Failed to send email", error);
 
       const Swal = (await import("sweetalert2")).default;
@@ -58,6 +77,9 @@ export function ContactForm() {
         confirmButtonText: "OK",
         allowOutsideClick: false
       });
+    }
+    finally {
+      setLoading(false);
     }
   };
 
