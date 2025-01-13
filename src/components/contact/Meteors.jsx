@@ -1,10 +1,21 @@
+import { useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 
 const Meteors = ({ number, className }) => {
-  const meteors = new Array(number || 20).fill(true);
+  const [meteors, setMeteors] = useState([]);
+
+  useEffect(() => {
+    const generatedMeteors = new Array(number || 20).fill(true).map(() => ({
+      left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
+      animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
+      animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+    }));
+    setMeteors(generatedMeteors);
+  }, [number]);
+
   return (
     <>
-      {meteors.map((el, idx) => (
+      {meteors.map((meteor, idx) => (
         <span
           key={"meteor" + idx}
           className={cn(
@@ -14,9 +25,9 @@ const Meteors = ({ number, className }) => {
           )}
           style={{
             top: 0,
-            left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
-            animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
-            animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+            left: meteor.left,
+            animationDelay: meteor.animationDelay,
+            animationDuration: meteor.animationDuration,
           }}
         ></span>
       ))}

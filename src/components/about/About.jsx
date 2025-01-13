@@ -11,7 +11,7 @@ const About = () => {
                     <p>My current focus revolves around craft high-quality web applications and continuously improving my professional skills. My goal is to push my own every day, offering increasingly innovative and efficient results to technological challenges we confront.</p>
                     <p>In the other hand, I enjoy nurturing my mind through books, exploring new worlds by reading and acquiring knowledge. In addition, I&apos;m passionate about well-being and health. You&apos;ll regularly find me at the gym, working on my mind and body.</p>
                 </div>
-                <Image width={256} height={256} loading="lazy" className='shadow-img object-cover mx-auto lg:h-80' src="/img/web/avatar.webp" alt="Avatar-Benjamin_Paredes" />
+                <Image width={256} height={256} priority className='shadow-img object-cover mx-auto lg:h-80' src="/img/web/avatar.webp" alt="Avatar-Benjamin_Paredes" />
             </div>
         </section>
     )

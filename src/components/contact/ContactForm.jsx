@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 const Meteors = lazy(() => import("./Meteors"));
 
 export function ContactForm() {
@@ -14,24 +15,9 @@ export function ContactForm() {
   const form = useRef();
   const apiCaptchaKey = process.env.NEXT_PUBLIC_CAPTCHA;
 
-  useEffect(() => {
-    if (loading) {
-      Swal.fire({
-        title: 'Sending...',
-        text: 'Wait please.',
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        }
-      });
-    } else {
-      Swal.close();
-    }
-  }, [loading])
-
   const sendEmail = async (values, { resetForm }) => {
+
     if (!recaptchaValue) {
-      console.error("Please complete the CAPTCHA");
       Swal.fire({
         title: "Error: Complete the captcha",
         icon: "error",
@@ -44,7 +30,6 @@ export function ContactForm() {
     setLoading(true);
 
     try {
-      const emailjs = await import("@emailjs/browser");
       const apiEmailService = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
       const apiEmailTemplate = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE;
       const apiEmailKey = process.env.NEXT_PUBLIC_EMAIL_KEY;
@@ -56,24 +41,24 @@ export function ContactForm() {
         apiEmailKey
       );
 
-      const Swal = (await import("sweetalert2")).default;
       Swal.fire({
         title: "Success",
         icon: "success",
+        text: "Email sent successfully",
         confirmButtonText: "OK",
         allowOutsideClick: false
       });
       resetForm();
       setRecaptchaValue("");
       setRecaptchaKey(prevKey => prevKey + 1);
-    } 
+    }
     catch (error) {
       console.error("Failed to send email", error);
 
-      const Swal = (await import("sweetalert2")).default;
       Swal.fire({
         title: "Error",
         icon: "error",
+        text: "Failed to send email",
         confirmButtonText: "OK",
         allowOutsideClick: false
       });
@@ -145,9 +130,10 @@ export function ContactForm() {
 
               <button
                 type="submit"
-                className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-transparent bg-[length:200%_100%] px-6 font-medium text-customColor4 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                className={`inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-transparent bg-[length:200%_100%] px-6 font-medium text-customColor4 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 disabled:cursor-not-allowed`}
+                disabled={loading || !recaptchaValue}
               >
-                Send
+                {loading ? "Sending..." : "Send"}
               </button>
             </Form>
           )}
