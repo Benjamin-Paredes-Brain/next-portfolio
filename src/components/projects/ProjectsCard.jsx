@@ -32,9 +32,9 @@ function ProjectsCard() {
     return (
         <div className="flex flex-col gap-24 md:flex-row">
             {projects.map((project, index) => (
-                <BackgroundGradient className="rounded-[22px] max-w-sm bg-gradient-to-bl from-customColor2 to-customColor1 p-2">
+                <BackgroundGradient key={index} className="rounded-[22px] max-w-sm bg-gradient-to-bl from-customColor2 to-customColor1 p-2">
 
-                    <div key={index} className="flex flex-col gap-2 relative group p-8">
+                    <div className="flex flex-col gap-2 relative group p-8">
                         <img loading="lazy" className="object-contain mx-auto w-[600px] h-[300px]" src={project.thumbnail} alt={project.title} />
                         <p className="text-xl text-black mt-4 mb-2 dark:text-neutral-200">{project.title}</p>
                         <div
