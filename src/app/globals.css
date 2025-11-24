@@ -37,5 +37,5 @@
   }
   
   .title {
-    @apply text-6xl lg:text-7xl my-8 lg:my-16;
+    @apply text-5xl md:text-6xl lg:text-7xl my-8 lg:my-16;
   }

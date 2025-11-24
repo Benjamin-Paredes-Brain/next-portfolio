@@ -12,7 +12,7 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <span className="space-y-16 md:space-y-24 xl:space-y-48">
+      <span className="space-y-48">
         <Home />
         <Experience />
         <Projects />

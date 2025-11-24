@@ -24,7 +24,7 @@ const Navbar = () => {
         <header className={`${scrolled ? "bg-customColor2 bg-opacity-10 backdrop-blur-md" : "bg-transparent"} sticky inset-0 z-50`}>
 
             <nav className='flex items-center justify-center section-separation py-4'>
-                <ul className="flex text-customColor4 text-lg gap-4 lg:text-2xl lg:gap-8">
+                <ul className="flex flex-wrap justify-center text-customColor4 text-sm gap-3 sm:text-base lg:text-2xl lg:gap-8">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>

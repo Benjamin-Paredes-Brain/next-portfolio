@@ -8,7 +8,7 @@ const CardsGrid = ({ items }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className={cn("grid grid-cols-2 py-10 md:grid-cols-4")}>
+    <div className={cn("grid grid-cols-2 md:grid-cols-4")}>
       {items.map((item, idx) => (
         <div
           key={idx}
