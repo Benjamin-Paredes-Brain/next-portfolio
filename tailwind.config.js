@@ -14,6 +14,7 @@ module.exports = {
         customColor4: "#EFF8E2",
         customColor5: "#ffffff",
         customColor6: "rgb(73, 7, 73)",
+        customColor7: "#ba52ba"
       },
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",

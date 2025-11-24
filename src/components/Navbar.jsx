@@ -26,6 +26,7 @@ const Navbar = () => {
             <nav className='flex items-center justify-center section-separation py-4'>
                 <ul className="flex text-customColor4 text-lg gap-4 lg:text-2xl lg:gap-8">
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#about">About</a></li>

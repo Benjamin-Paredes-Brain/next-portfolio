@@ -8,7 +8,7 @@ const CardsGrid = ({ items }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className={cn("grid grid-cols-2 py-10 md:grid-cols-3 lg:grid-cols-4")}>
+    <div className={cn("grid grid-cols-2 py-10 md:grid-cols-4")}>
       {items.map((item, idx) => (
         <div
           key={idx}
@@ -36,7 +36,7 @@ const CardsGrid = ({ items }) => {
 
           <div className={cn("flex flex-col items-center justify-center rounded-2xl h-full w-full p-4 overflow-hidden bg-transparent border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-0")}>
             <div className="text-5xl md:text-6xl lg:text-7xl"><item.icon loading="lazy" style={{ color: item.color }} /></div>
-            <p className={cn("mt-8 text-zinc-400 tracking-wide leading-relaxed text-lg md:text-xl lg:text-2xl")}>
+            <p className={cn("mt-8 text-zinc-400 tracking-wide leading-relaxed text-lg lg:text-xl")}>
               {item.title}
             </p>
           </div>

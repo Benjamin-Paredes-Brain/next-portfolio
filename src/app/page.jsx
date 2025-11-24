@@ -5,17 +5,21 @@ import Skills from "@/components/skills/Skills";
 import About from "@/components/about/About";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
+import Experience from "@/components/experience/Experience";
 
 
 const Page = () => {
   return (
     <>
       <Navbar />
-      <Home />
-      <Projects />
-      <Skills />
-      <About />
-      <Contact />
+      <span className="space-y-16 md:space-y-24 xl:space-y-48">
+        <Home />
+        <Experience />
+        <Projects />
+        <Skills />
+        <About />
+        <Contact />
+      </span>
       <Footer />
     </>
   )

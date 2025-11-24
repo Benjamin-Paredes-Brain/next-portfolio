@@ -2,11 +2,11 @@
 
 import { lazy, Suspense } from "react";
 import { FaHtml5, FaCss3, FaJs, FaSass, FaReact, FaNode, FaGitAlt, FaGithub, FaPython } from "react-icons/fa";
-import { DiMongodb } from "react-icons/di";
-import { SiExpress, SiTailwindcss, SiNextdotjs, SiSocketdotio } from "react-icons/si";
-import { TbSeo } from "react-icons/tb";
+import { DiMongodb, DiMsqlServer } from "react-icons/di";
+import { SiExpress, SiTailwindcss, SiNextdotjs } from "react-icons/si";
 import CardsGrid from "./CardsGrid";
 import { BiLogoFirebase } from "react-icons/bi";
+import { PowerBiIcon } from "./Icons";
 
 const Spotlight = lazy(() => import("./SpotLight"))
 
@@ -18,17 +18,17 @@ const Skills = () => {
         { icon: FaJs, color: "#f6de1d", title: "JAVASCRIPT" },
         { icon: FaPython, color: "#306998", title: "PYTHON" },
         { icon: FaSass, color: "#ce649b", title: "SASS" },
+        { icon: SiTailwindcss, color: "#2596be", title: "TAILWINDCSS" },
+        { icon: FaGitAlt, color: "#f05032", title: "GIT" },
+        { icon: FaGithub, color: "#ffffff", title: "GITHUB" },
         { icon: FaReact, color: "#62dafc", title: "REACTJS" },
         { icon: FaNode, color: "#82cc29", title: "NODEJS" },
-        { icon: FaGitAlt, color: "#f05032", title: "GIT" },
-        { icon: FaGithub, color: "#000101", title: "GITHUB" },
-        { icon: DiMongodb, color: "#58ac44", title: "MONGODB" },
-        { icon: SiExpress, color: "#00000", title: "EXPRESSJS" },
+        { icon: SiExpress, color: "#ffffff", title: "EXPRESSJS" },
         { icon: SiNextdotjs, color: "#ffffff", title: "NEXTJS" },
-        { icon: SiTailwindcss, color: "#2596be", title: "TAILWINDCSS" },
         { icon: BiLogoFirebase, color: "#ffca28", title: "FIREBASE" },
-        { icon: SiSocketdotio, color: "#010101", title: "SOCKET.IO" },
-        { icon: TbSeo, color: "#ffffff", title: "SEO" },
+        { icon: DiMsqlServer, color: "#ffffff", title: "SQL SERVER" },
+        { icon: DiMongodb, color: "#58ac44", title: "MONGODB" },
+        { icon: PowerBiIcon, color: "#ffffff", title: "POWER BI" },
     ];
 
     return (
