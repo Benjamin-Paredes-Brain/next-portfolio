@@ -1,22 +1,36 @@
-import { MdArrowForward } from "react-icons/md"
+import { MdArrowForward } from "react-icons/md";
 
 export const ExperienceTimeline = () => {
-
   const workExperiences = [
     {
       id: "1",
-      position: "Fullstack Developer",
+      position: "Full Stack Developer",
+      company: "Clínica Nahas",
+      duration: "February 2026 - May 2026",
+      description:
+        "Developed an operational and financial management platform for a clinic, working closely with management roles to identify internal organization, control, and reporting problems that could be solved through software.",
+      highlights: [
+        "Centralized administrative and financial processes that were previously harder to track consistently.",
+        "Built operational sections for internal staff to register and manage daily activity more efficiently.",
+        "Delivered management-oriented reports to support better decision-making and internal control.",
+      ],
+      technologies: ["NestJS", "React", "Prisma ORM", "PostgreSQL"]
+    },
+    {
+      id: "2",
+      position: "Full Stack Developer",
       company: "TixPays",
-      duration: "February 2025 - September 2025",
-      description: "Developed an end-to-end platform for managing sales and consumptions at live events, including real-time ticket generation, stock and bar management, staff roles, and analytics dashboards with exportable reports.",
+      duration: "March 2025 - November 2025",
+      description:
+        "Developed an end-to-end platform for managing sales and consumptions at live events, including real-time ticket generation, stock and bar management, staff roles, and analytics dashboards with exportable reports.",
       highlights: [
         "Automated the full sales flow and on-demand ticket issuance during events.",
         "Reduced stock and cash discrepancies by implementing smart inventory and cash-withdraw tracking.",
         "Enabled real-time decision-making with live KPIs and downloadable reports for event managers.",
       ],
-      // link: "#", // opcional
-    },
-  ]
+      technologies: ["Node.js", "Express", "MongoDB", "React"],
+    } 
+  ];
 
   return (
     <div className="relative space-y-8 md:space-y-12">
@@ -33,7 +47,7 @@ export const ExperienceTimeline = () => {
             {/* Content */}
             <div className="space-y-2 md:space-y-3">
               {/* Position */}
-              <h3 className="text-xl md:text-2xl font-bold text-customColor7">
+              <h3 className="text-xl font-bold text-customColor7">
                 {exp.position}
               </h3>
 
@@ -42,7 +56,7 @@ export const ExperienceTimeline = () => {
                 <p className="text-base md:text-lg font-bold text-customColor5">
                   {exp.company}
                 </p>
-                <p className="text-sm md:text-base text-customColor2">
+                <p className="text-sm text-customColor2">
                   {exp.duration}
                 </p>
               </div>
@@ -57,7 +71,7 @@ export const ExperienceTimeline = () => {
               {/* Highlights */}
               {exp.highlights && exp.highlights.length > 0 && (
                 <div className="pt-2">
-                  <p className="text-xs md:text-sm font-bold uppercase tracking-wide text-customColor4 mb-2">
+                  <p className="text-xs font-bold uppercase tracking-wide text-customColor4 mb-2">
                     Key achievements
                   </p>
                   <ul className="space-y-1.5">
@@ -71,6 +85,25 @@ export const ExperienceTimeline = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Technologies */}
+              {exp.technologies && exp.technologies.length > 0 && (
+                <div className="pt-2">
+                  <p className="text-xs md:text-sm font-bold uppercase tracking-wide text-customColor4 mb-2">
+                    Main stack
+                  </p>
+                  <div className="flex flex-wrap gap-2 max-w-3xl">
+                    {exp.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-customColor7/30 px-3 py-1 text-xs md:text-sm text-customColor3"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -89,6 +122,5 @@ export const ExperienceTimeline = () => {
         ))}
       </div>
     </div>
-
-  )
-}
+  );
+};

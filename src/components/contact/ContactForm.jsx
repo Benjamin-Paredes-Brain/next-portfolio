@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useRef, Suspense, lazy, useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -9,20 +9,19 @@ import emailjs from "@emailjs/browser";
 const Meteors = lazy(() => import("./Meteors"));
 
 export function ContactForm() {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [recaptchaValue, setRecaptchaValue] = useState("");
   const [recaptchaKey, setRecaptchaKey] = useState(1);
   const form = useRef();
   const apiCaptchaKey = process.env.NEXT_PUBLIC_CAPTCHA;
 
   const sendEmail = async (values, { resetForm }) => {
-
     if (!recaptchaValue) {
       Swal.fire({
         title: "Error: Complete the captcha",
         icon: "error",
         confirmButtonText: "OK",
-        allowOutsideClick: false
+        allowOutsideClick: false,
       });
       return;
     }
@@ -38,7 +37,7 @@ export function ContactForm() {
         apiEmailService,
         apiEmailTemplate,
         form.current,
-        apiEmailKey
+        apiEmailKey,
       );
 
       Swal.fire({
@@ -46,13 +45,12 @@ export function ContactForm() {
         icon: "success",
         text: "Email sent successfully",
         confirmButtonText: "OK",
-        allowOutsideClick: false
+        allowOutsideClick: false,
       });
       resetForm();
       setRecaptchaValue("");
-      setRecaptchaKey(prevKey => prevKey + 1);
-    }
-    catch (error) {
+      setRecaptchaKey((prevKey) => prevKey + 1);
+    } catch (error) {
       console.error("Failed to send email", error);
 
       Swal.fire({
@@ -60,10 +58,9 @@ export function ContactForm() {
         icon: "error",
         text: "Failed to send email",
         confirmButtonText: "OK",
-        allowOutsideClick: false
+        allowOutsideClick: false,
       });
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -77,17 +74,24 @@ export function ContactForm() {
             name: "",
             email: "",
             message: "",
-            recaptcha: ""
+            recaptcha: "",
           }}
           validationSchema={Yup.object().shape({
             name: Yup.string().required("Name is required"),
-            email: Yup.string().email("Invalid email address").required("Email is required"),
-            message: Yup.string().required("Message is required").min(10, "Message must be at least 10 characters"),
+            email: Yup.string()
+              .email("Invalid email address")
+              .required("Email is required"),
+            message: Yup.string()
+              .required("Message is required")
+              .min(10, "Message must be at least 10 characters"),
           })}
           onSubmit={sendEmail}
         >
           {({ errors, touched }) => (
-            <Form ref={form} className="flex flex-col gap-4 text-customColor4 w-full">
+            <Form
+              ref={form}
+              className="flex flex-col gap-4 text-customColor4 w-full"
+            >
               <label htmlFor="name">Name:</label>
               <Field
                 className="bg-transparent rounded-md border border-slate-800 p-4"
@@ -96,7 +100,11 @@ export function ContactForm() {
                 name="name"
                 placeholder="Jhon Doe"
               />
-              <ErrorMessage name="name" component="div" className="text-red-500" />
+              <ErrorMessage
+                name="name"
+                component="div"
+                className="text-red-500"
+              />
 
               <label htmlFor="email">Email:</label>
               <Field
@@ -106,7 +114,11 @@ export function ContactForm() {
                 name="email"
                 placeholder="email@example.com"
               />
-              <ErrorMessage name="email" component="div" className="text-red-500" />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="text-red-500"
+              />
 
               <label htmlFor="message">Message:</label>
               <Field
@@ -117,7 +129,11 @@ export function ContactForm() {
                 cols="30"
                 rows="4"
               />
-              <ErrorMessage name="message" component="div" className="text-red-500" />
+              <ErrorMessage
+                name="message"
+                component="div"
+                className="text-red-500"
+              />
 
               <div className="mb-4">
                 <ReCAPTCHA
@@ -125,7 +141,9 @@ export function ContactForm() {
                   sitekey={apiCaptchaKey}
                   onChange={(value) => setRecaptchaValue(value)}
                 />
-                {errors.recaptcha && <div className="text-red-500">{errors.recaptcha}</div>}
+                {errors.recaptcha && (
+                  <div className="text-red-500">{errors.recaptcha}</div>
+                )}
               </div>
 
               <button

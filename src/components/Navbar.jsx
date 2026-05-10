@@ -1,40 +1,52 @@
-"use client"
-import { useState, useEffect } from "react"
+"use client";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            if (scrollTop > 100) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
 
-        window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  return (
+    <header
+      className={`${scrolled ? "bg-customColor2 bg-opacity-10 backdrop-blur-md" : "bg-transparent"} sticky inset-0 z-50`}
+    >
+      <nav className="flex items-center justify-center section-separation py-4">
+        <ul className="flex flex-wrap justify-center text-customColor4 text-sm gap-3 sm:text-base lg:text-2xl lg:gap-8">
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#experience">Experience</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
-    return (
-        <header className={`${scrolled ? "bg-customColor2 bg-opacity-10 backdrop-blur-md" : "bg-transparent"} sticky inset-0 z-50`}>
-
-            <nav className='flex items-center justify-center section-separation py-4'>
-                <ul className="flex flex-wrap justify-center text-customColor4 text-sm gap-3 sm:text-base lg:text-2xl lg:gap-8">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-    )
-}
-
-export default Navbar
+export default Navbar;

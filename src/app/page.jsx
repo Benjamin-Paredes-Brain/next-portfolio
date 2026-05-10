@@ -7,7 +7,6 @@ import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
 import Experience from "@/components/experience/Experience";
 
-
 const Page = () => {
   return (
     <>
@@ -22,7 +21,7 @@ const Page = () => {
       </span>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
