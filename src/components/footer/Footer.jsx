@@ -8,8 +8,8 @@ const ArrowButtonUp = lazy(
 
 const Footer = () => {
   return (
-    <footer className="section-separation text-customColor2 mt-12 flex items-center justify-between lg:mt-20 lg:text-xl">
-      <p>© 2026 Benjamín Martin Paredes Brain.</p>
+    <footer className="section-separation text-customColor2 mt-12 flex flex-col items-center gap-6 lg:flex-row lg:justify-between lg:mt-20 lg:text-xl">
+      <p className="text-center lg:text-left">© 2026 Benjamín Martin Paredes Brain.</p>
       <div className="flex items-center justify-center gap-4 text-3xl">
         <a
           href="https://www.linkedin.com/in/benjamin-martin-paredes-brain/"
@@ -25,10 +25,10 @@ const Footer = () => {
         >
           <BiLogoGithub />
         </a>
+        <Suspense fallback={null}>
+          <ArrowButtonUp />
+        </Suspense>
       </div>
-      <Suspense fallback={null}>
-        <ArrowButtonUp />
-      </Suspense>
     </footer>
   );
 };

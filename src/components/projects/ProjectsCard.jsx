@@ -119,7 +119,7 @@ function ProjectCard({ project }) {
 // Carrusel solo hasta lg-
 function CarouselLayout() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
+    loop: true,
     align: "start",
   });
 
