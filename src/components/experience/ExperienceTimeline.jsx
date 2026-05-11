@@ -4,7 +4,7 @@ export const ExperienceTimeline = () => {
   const workExperiences = [
     {
       id: "1",
-      position: "Full Stack Developer",
+      position: "Full Stack Developer Freelance",
       company: "Clínica Nahas",
       duration: "February 2026 - May 2026",
       description:
@@ -18,7 +18,7 @@ export const ExperienceTimeline = () => {
     },
     {
       id: "2",
-      position: "Full Stack Developer",
+      position: "Full Stack Developer Freelance",
       company: "TixPays",
       duration: "March 2025 - November 2025",
       description:
